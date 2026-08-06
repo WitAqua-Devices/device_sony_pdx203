@@ -1,2 +1,6 @@
 soong_namespace {
+    // libinit_pdx203 builds on the LTALabel detection in sm8250-common.
+    imports: [
+        "device/sony/sm8250-common",
+    ],
 }

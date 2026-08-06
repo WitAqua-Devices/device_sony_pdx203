@@ -49,6 +49,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libhdr_somc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/libhdr_somc.xml
 
+# Init
+# Replaces edo.mk's libinit_sm8250: same LTALabel detection, but it also puts
+# back the stock build fingerprint on the japanese SKUs.
+SONY_VENDOR_INIT_LIB := //$(LOCAL_PATH):libinit_pdx203
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
