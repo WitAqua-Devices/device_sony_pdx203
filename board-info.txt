@@ -1,1 +1,1 @@
-require board=kona|pdx203|XQ-AT52
+require board=kona|pdx203|XQ-AT42|XQ-AT51|XQ-AT52|SO-51A|SOG01

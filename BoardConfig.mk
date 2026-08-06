@@ -36,6 +36,14 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
+# OTA
+# ro.product.device is overridden to XQ-AT52 for the stock fingerprint, so an
+# A/B package ends up with pre-device=XQ-AT52 and recovery turns it down on
+# anything reporting a different name - most notably a device still on its
+# stock japanese firmware, which calls itself SO-51A or SOG01. All of these are
+# the same pdx203 board.
+TARGET_OTA_ASSERT_DEVICE := pdx203,XQ-AT42,XQ-AT51,XQ-AT52,SO-51A,SOG01
+
 # Props
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
