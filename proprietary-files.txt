@@ -636,6 +636,31 @@ vendor/lib64/camera/com.sony.sensormodule.icarus_imx316.bin
 # Charger
 vendor/etc/chg-pwr-service.cfg
 
+# FeliCa (Osaifu-Keitai)
+# Every pdx203 SKU shares one build, so each model's set ships under its own
+# name and init.sony.rc binds the matching one over the canonical path. The
+# canonical set is au's, which is why SOG01 has no copy of its own. common.cfg
+# carries the carrier code and the model string, mfm.cfg a certificate FeliCa
+# Networks signed per model, so a set only works whole - the chip answers to
+# the one it was formatted against. The whole directory is bound, so mfs.cfg
+# has to be in every set even though it does not differ between them.
+#   ./extract-files.py -n -s 'FeliCa (Osaifu-Keitai)' <ROM/SOG01/extracted>
+vendor/etc/felica/common.cfg
+vendor/etc/felica/mfm.cfg
+vendor/etc/felica/mfs.cfg
+
+# FeliCa (SO-51A)
+#   ./extract-files.py -n -s 'FeliCa (SO-51A)' <ROM/SO51A/extracted>
+vendor/etc/felica/common.cfg:vendor/etc/felica_SO-51A/common.cfg
+vendor/etc/felica/mfm.cfg:vendor/etc/felica_SO-51A/mfm.cfg
+vendor/etc/felica/mfs.cfg:vendor/etc/felica_SO-51A/mfs.cfg
+
+# FeliCa (XQ-AT42)
+#   ./extract-files.py -n -s 'FeliCa (XQ-AT42)' <ROM/XQAT42/extracted>
+vendor/etc/felica/common.cfg:vendor/etc/felica_XQ-AT42/common.cfg
+vendor/etc/felica/mfm.cfg:vendor/etc/felica_XQ-AT42/mfm.cfg
+vendor/etc/felica/mfs.cfg:vendor/etc/felica_XQ-AT42/mfs.cfg
+
 # Display calibration data
 vendor/etc/qdcm_calib_data_9.xml
 
